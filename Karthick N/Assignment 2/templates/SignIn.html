@@ -1,0 +1,47 @@
+{% extends "layout.html"%}
+{% block content%}
+<div class="container">
+    <div class="row justify-content-center my-5 p-5">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            {%if message%}
+            <div class='alert alert-{{category}}'>{{message}}</div>
+            {% endif %}
+            <div class="card p-5">
+                <h1 class="text-center">SIGN IN</h1>
+                <form method="POST" action="/welcome" novalidate class="needs-validation">
+                    <div class="form-group my-3">
+                        <label class="form-label">Email:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                            <input class="form-control" type="email" placeholder="Enter your Email Id " name="email"
+                                maxlength="30" autocomplete="on" required></input>
+                            <div class="invalid-feedback">
+                                Please provide an email address ...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Password:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                            <input class="form-control" type="password"
+                                placeholder="Enter your Password (max character of 10)" name="password" maxlength="10"
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,10}$" required>
+                            </input>
+                            <div class="invalid-feedback">
+                                At least one lowercase letter(a - z),At least one uppercase letter(A - Z),At least one
+                                numeric value(0-9),At least one special symbol(!@#$%^&*=+-_),total length between
+                                range(8,10)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group my-3">
+                        <button class="btn btn-primary" type="submit">Sign in</button>
+                    </div>
+                </form>
+                <strong class="text-center">New User ? <a href="/register">Register</a></strong>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

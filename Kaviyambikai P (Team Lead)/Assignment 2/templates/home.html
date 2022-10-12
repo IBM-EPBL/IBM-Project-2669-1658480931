@@ -1,0 +1,28 @@
+{% extends "layout.html"%}
+{% block content%}
+<div class="row">
+    {% for post in posts %}
+    <div class="col-md-3 col-xs-12 col-sm-12 my-3 px-3">
+        <div class="card">
+            <div class="card-title">
+                <h4 class="p-1">{{post.name}}</h4>
+            </div>
+            <div class="row">
+                <div class="p-3 col">
+                    <strong>{{ post.email }}</strong><br>
+                    <strong>{{post.phoneNumber}}</strong>
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col">
+                    <a class='text-decoration-none text-white' href="{{url_for('delete',id=post.id)}}"><button
+                            class="mx-3 btn btn-danger">DELETE</button></a>
+                    <a class='text-decoration-none text-white' href="{{url_for('update',id=post.id)}}"><button
+                            class="btn btn-info text-white">EDIT</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends "layout.html"%}
+{% block content%}
+<div class="container">
+    {%if RegisteredDetails%}
+    <div class="row justify-content-center my-5 p-5">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <h2 class="text-center">Welcome</h2>
+            <div class="card p-5">
+                <h4>User Name:{{RegisteredDetails.name}}</h4>
+                <h6>Email:{{RegisteredDetails.email}}</h6>
+                <h6>Phone Number:{{RegisteredDetails.phoneNumber}}</h6>
+                <a class="text-decoration-none text-white" href="{{url_for('logout')}}"> <button
+                        class="btn btn-primary my-3">
+                        Logout</button></a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-danger my-3">
+        Not Signed in
+        <div>
+            {% endif %}
+        </div>
+        {% endblock content %}

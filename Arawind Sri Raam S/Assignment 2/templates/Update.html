@@ -1,0 +1,51 @@
+{% extends "layout.html"%}
+{% block content%}
+<div class="container">
+    <div class="row justify-content-center my-5 p-5">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            {%if message%}
+            <div class="alert alert-danger">{{message}}</div>
+            {%endif%}
+            <div class="card p-5">
+                <h1 class="text-center">UPDATE USER</h1>
+                <form method="POST" action="/editDetails/{{user.id}}">
+                    <div class="form-group my-3">
+                        <label class="form-label">Name:</label>
+                        <input class="form-control" type="text" placeholder="Enter your name" value={{user.name}}
+                            name="name" maxlength="20" required></input>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Email:</label>
+                        <input class="form-control" type="email" placeholder="Enter your Email Id " name="email"
+                            value={{user.email}} maxlength="30" required></input>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Phone Number:</label>
+                        <input class="form-control" type="tel" placeholder="Enter your Phone number" name="phoneNumber"
+                            value={{user.phoneNumber}} pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10"
+                            required></input>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Password:</label>
+                        <input class="form-control" type="password"
+                            placeholder="Enter your Password (max character of 10)" name="password" maxlength="10"
+                            value={{user.password}} required></input>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Confirm Password:</label>
+                        <input class="form-control" type="password"
+                            placeholder="Enter your Password again (max character of 10)" maxlength="10"
+                            value={{user.password}} name="ConfirmPassword" required></input>
+                    </div>
+                    <div class="form-group my-3">
+                        <button class="btn btn-primary" type="submit">UPDATE</button>
+                        <a class="text-decoration-none text-white" href="{{url_for('home')}}"><button
+                                class="btn btn-primary" type="button">GO
+                                BACK</button></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
